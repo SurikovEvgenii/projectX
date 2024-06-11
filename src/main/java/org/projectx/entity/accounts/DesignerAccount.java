@@ -1,20 +1,31 @@
 package org.projectx.entity.accounts;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.projectx.entity.projects.Project;
 
+import java.util.Objects;
 import java.util.Set;
 
+/**
+ *
+ */
+
+
+@Data
 @Entity
 @Table(name="designers")
 public class DesignerAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = false, unique = true)
     private String login;
+
+    @Column(nullable = false)
+    private String password;
 
     @Column(length = 30, nullable = false)
     private String name;
