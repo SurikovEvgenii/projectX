@@ -1,23 +1,29 @@
 package org.projectx.entity.data;
 
 import jakarta.persistence.*;
-import org.projectx.entity.accounts.User;
+import lombok.Data;
+import org.projectx.entity.accounts.UserAccount;
 import org.projectx.entity.projects.Project;
 
-import java.util.Objects;
-import java.util.Set;
+/**
+ *
+ */
 
+@Data
 @Entity
+@Table(name="comments")
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(columnDefinition = "TEXT")
     private String text;
+
     @ManyToOne
     private Project project;
+
     @ManyToOne
-    private User user;
-
-
+    private UserAccount userAccount;
 }
